@@ -1,0 +1,54 @@
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1"
+    tools:context=".fragments.DeleteSkinFragment" >
+    <!--Delete-->
+
+    <TableRow>
+        <TextView
+            android:id="@+id/deleteSkinLabel"
+            android:hint="Skin name"
+            android:textStyle="bold"
+            android:background="#EEFFBB"
+            android:text="Skin:" />
+        <Spinner
+            android:id="@+id/deleteSkinSpinner"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_span="4" />
+    </TableRow>
+    <TableRow>
+        <TextView
+            android:id="@+id/deleteSkinidLabel"
+            android:hint="Skin ID"
+            android:textStyle="bold"
+            android:background="#EEFFBB"
+            android:text="ID:" />
+
+        <TextView
+            android:id="@+id/deleteSkinidTextView"
+            android:layout_span="4" />
+    </TableRow>
+    <TableRow>
+        <Button
+            android:id="@+id/deleteSkinOK"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:background="#AAAAFF"
+            android:text="OK"
+            android:onClick="deleteSkinOK"
+            />
+        <Button
+            android:id="@+id/deleteSkinCancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="3"
+            android:background="#FFAAAA"
+            android:text="Cancel"
+            android:onClick="deleteSkinCancel"
+            />
+    </TableRow>
+</TableLayout>
