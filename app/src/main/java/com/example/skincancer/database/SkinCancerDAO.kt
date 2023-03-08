@@ -71,7 +71,7 @@ class SkinCancerDAO {
                 skinCancerx.images = obj.getString("images")
                 skinCancerx.outcome = obj.getString("outcome")
                 skinCancerx
-            } catch (_e: Exception) {
+            } catch (e: Exception) {
                 null
             }
         }
@@ -120,14 +120,14 @@ class SkinCancerDAO {
         }
 
 
-        fun writeJSON(_x: SkinCancer): JSONObject? {
+        fun writeJSON(x: SkinCancer): JSONObject? {
             val result = JSONObject()
             try {
-                result.put("id", _x.id)
-                result.put("dates", _x.dates)
-                result.put("images", _x.images)
-                result.put("outcome", _x.outcome)
-            } catch (_e: Exception) {
+                result.put("id", x.id)
+                result.put("dates", x.dates)
+                result.put("images", x.images)
+                result.put("outcome", x.outcome)
+            } catch (e: Exception) {
                 return null
             }
             return result
@@ -139,33 +139,34 @@ class SkinCancerDAO {
                  return null
             }
             try {
-                val _map = obj as HashMap<String, Object>
-                val id: String = _map["id"].toString()
-                var _skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex.get(id)
-                if (_skinCancerx == null) {
-                    _skinCancerx = SkinCancer.createByPKSkinCancer(id)
+                val map = obj as HashMap<String, Object>
+                val id: String = map["id"].toString()
+                var skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex.get(id)
+                if (skinCancerx == null) {
+                    skinCancerx = SkinCancer.createByPKSkinCancer(id)
                 }
-                _skinCancerx.id = _map["id"].toString()
-                _skinCancerx.dates = _map["dates"].toString()
-                _skinCancerx.images = _map["images"].toString()
-                _skinCancerx.outcome = _map["outcome"].toString()
-                return _skinCancerx
-            } catch (_e: Exception) {
+                skinCancerx.id = map["id"].toString()
+                skinCancerx.dates = map["dates"].toString()
+                skinCancerx.images = map["images"].toString()
+                skinCancerx.outcome = map["outcome"].toString()
+                return skinCancerx
+            } catch (e: Exception) {
                 return null
             }
         }
 
         fun writeJSONArray(es: ArrayList<SkinCancer>): JSONArray {
             val result = JSONArray()
-            for (_i in 0 until es.size) {
-                val _ex: SkinCancer = es[_i]
-                val _jx = writeJSON(_ex)
-                if (_jx == null) {
+            for (i in 0 until es.size) {
+                val ex: SkinCancer = es[i]
+                val jx = writeJSON(ex)
+                if (jx == null) {
                     //null
                 } else {
                     try {
-                        result.put(_jx)
-                    } catch (_ee: Exception) {
+                        result.put(jx)
+                    } catch (e: Exception) {
+                        e.printStackTrace()
                     }
                 }
             }
