@@ -2,7 +2,6 @@ package com.example.skincancer
 
 import android.content.Context
 import com.example.skincancer.viewmodel.SkinViewModel
-import java.lang.Exception
 import java.util.regex.Pattern
 
 class SkinCancerBean(c: Context) {
@@ -45,15 +44,21 @@ class SkinCancerBean(c: Context) {
 	        
 	        errors.clear()
 	        
-          if (id != "") {}
+          if (id != "") {
+	  //ok
+	  }
 	         else {
 	               errors.add("id cannot be empty")
 	         }
-	            if (validateDate(dates)) {}
+	            if (validateDate(dates)) {
+		    //ok
+		    }
 	         else {
 	               errors.add("dates should written as \"DD-MM-YYYY\"")
 	         }
-          if (images != "") {}
+          if (images != "") {
+	  //ok
+	  }
 	         else {
 	               errors.add("images cannot be empty")
 	         }
@@ -78,15 +83,21 @@ class SkinCancerBean(c: Context) {
 			if (!allSkinCancerids.contains(id)) {
 				errors.add("The id is not exist")
 		    }
-          if (id != "") {}
+          if (id != "") {
+	  //ok
+	  }
 	         else {
 	               errors.add("id cannot be empty")
 	         }
-            if (validateDate(dates)) {}
+            if (validateDate(dates)) {
+	    //ok
+	    }
 	                else {
 	                    errors.add("dates should written as \"DD-MM-YYYY\"")
 	                }
-          if (images != "") {}
+          if (images != "") {
+	  //ok
+	  }
 	         else {
 	               errors.add("images cannot be empty")
 	         }
