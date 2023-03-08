@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.skincancer.R
-import com.example.skincancer.SkinCancerBean
 import com.example.skincancer.SkinCancerVO
 import com.example.skincancer.adapter.SkinRecyclerViewAdapter
 import com.example.skincancer.viewmodel.SkinViewModel
@@ -46,7 +45,6 @@ class ListSkinFragment : Fragment() {
         val view = inflater.inflate(R.layout.listskin_layout, container, false)
         model = SkinViewModel.getInstance(myContext)
         Log.i("test", model.listSkinCancer().toString())
-        val data = arguments
 
         if (view is RecyclerView) {
             val context = view.getContext()
