@@ -117,8 +117,7 @@ lateinit var buttonCapture: Button
 		buttonCapture = root.findViewById(R.id.buttonTakePhoto)
 		buttonCapture.setOnClickListener(this)		
 		
-	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-		if (ContextCompat.checkSelfPermission(
+	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(
 				myContext,
 				Manifest.permission.READ_EXTERNAL_STORAGE
 			) != PackageManager.PERMISSION_GRANTED
@@ -127,7 +126,6 @@ lateinit var buttonCapture: Button
 				arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
 				REQUESTREADEXTERNALSTORAGE
 			)
-		}
 	}
 	
 		return root
@@ -139,7 +137,9 @@ lateinit var buttonCapture: Button
 		}
 	}
 
-	override fun onNothingSelected(parent: AdapterView<*>?) {}
+	override fun onNothingSelected(parent: AdapterView<*>?) {
+	//onNothingSelected
+	}
 
 	override fun onClick(v: View) {
 	val imm = myContext.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
