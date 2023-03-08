@@ -32,7 +32,7 @@ class SkinCancerDAO {
         }
 
         fun isCached(id: String?): Boolean {
-            val _x: SkinCancer = SkinCancer.SkinCancerIndex.get(id) ?: return false
+            val x: SkinCancer = SkinCancer.SkinCancerIndex.get(id) ?: return false
             return true
         }
 
@@ -40,19 +40,19 @@ class SkinCancerDAO {
             return SkinCancer.SkinCancerIndex.get(id)
         }
 
-      fun parseCSV(_line: String?): SkinCancer? {
-          if (_line == null) {
+      fun parseCSV(line: String?): SkinCancer? {
+          if (line == null) {
               return null
           }
-          val _line1vals: ArrayList<String> = Ocl.tokeniseCSV(_line)
-          var skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex.get(_line1vals[0])
+          val line1vals: ArrayList<String> = Ocl.tokeniseCSV(line)
+          var skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex.get(line1vals[0])
           if (skinCancerx == null) {
-              skinCancerx = SkinCancer.createByPKSkinCancer(_line1vals[0])
+              skinCancerx = SkinCancer.createByPKSkinCancer(line1vals[0])
           }
-          skinCancerx.id = _line1vals[0].toString()
-          skinCancerx.dates = _line1vals[1].toString()
-          skinCancerx.images = _line1vals[2].toString()
-          skinCancerx.outcome = _line1vals[3].toString()
+          skinCancerx.id = line1vals[0].toString()
+          skinCancerx.dates = line1vals[1].toString()
+          skinCancerx.images = line1vals[2].toString()
+          skinCancerx.outcome = line1vals[3].toString()
           return skinCancerx
       }
 
@@ -62,15 +62,15 @@ class SkinCancerDAO {
                 null
             } else try {
                 val id = obj.getString("id")
-                var _skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex.get(id)
-                if (_skinCancerx == null) {
-                    _skinCancerx = SkinCancer.createByPKSkinCancer(id)
+                var skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex.get(id)
+                if (skinCancerx == null) {
+                    skinCancerx = SkinCancer.createByPKSkinCancer(id)
                 }
-                _skinCancerx.id = obj.getString("id")
-                _skinCancerx.dates = obj.getString("dates")
-                _skinCancerx.images = obj.getString("images")
-                _skinCancerx.outcome = obj.getString("outcome")
-                _skinCancerx
+                skinCancerx.id = obj.getString("id")
+                skinCancerx.dates = obj.getString("dates")
+                skinCancerx.images = obj.getString("images")
+                skinCancerx.outcome = obj.getString("outcome")
+                skinCancerx
             } catch (_e: Exception) {
                 null
             }
@@ -85,10 +85,11 @@ class SkinCancerDAO {
           for (item in rows.indices) {
               val row = rows[item]
               if (row == null || row.trim { it <= ' ' }.length == 0) {
+                  //trim
               } else {
-                  val _x: SkinCancer? = parseCSV(row)
-                  if (_x != null) {
-                      result.add(_x)
+                  val x: SkinCancer? = parseCSV(row)
+                  if (x != null) {
+                      result.add(x)
                   }
               }
           }
@@ -104,14 +105,15 @@ class SkinCancerDAO {
             val len = jarray.length()
             for (i in 0 until len) {
                 try {
-                    val _x = jarray.getJSONObject(i)
-                    if (_x != null) {
-                        val _y: SkinCancer? = parseJSON(_x)
-                        if (_y != null) {
-                            res.add(_y)
+                    val x = jarray.getJSONObject(i)
+                    if (x != null) {
+                        val y: SkinCancer? = parseJSON(x)
+                        if (y != null) {
+                            res.add(y)
                         }
                     }
-                } catch (_e: Exception) {
+                } catch (e: Exception) {
+                     e.printStackTrace()
                 }
             }
             return res
@@ -159,6 +161,7 @@ class SkinCancerDAO {
                 val _ex: SkinCancer = es[_i]
                 val _jx = writeJSON(_ex)
                 if (_jx == null) {
+                    //null
                 } else {
                     try {
                         result.put(_jx)
