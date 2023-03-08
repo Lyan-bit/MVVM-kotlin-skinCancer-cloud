@@ -25,47 +25,50 @@ class FirebaseDB() {
         if (database == null) {
             return
         }
-        val skinCancer_listener: ValueEventListener = object : ValueEventListener {
+        val skinCancerListener: ValueEventListener = object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 // Get instances from the cloud database
-                val _skinCancers = dataSnapshot.value as HashMap<String, Object>?
-                if (_skinCancers != null) {
-                    val _keys = _skinCancers.keys
-                    for (_key in _keys) {
-                        val _x = _skinCancers[_key]
-                        SkinCancerDAO.parseRaw(_x)
+                val skinCancers = dataSnapshot.value as HashMap<String, Object>?
+                if (skinCancers != null) {
+                    val keys = skinCancers.keys
+                    for (key in keys) {
+                        val x = skinCancers[key]
+                        SkinCancerDAO.parseRaw(x)
                     }
                     // Delete local objects which are not in the cloud:
-                    val _locals = ArrayList<SkinCancer>()
-                    _locals.addAll(SkinCancer.SkinCancerAllInstances)
-                    for (_x in _locals) {
-                        if (_keys.contains(_x.id)) {
+                    val locals = ArrayList<SkinCancer>()
+                    locals.addAll(SkinCancer.SkinCancerAllInstances)
+                    for (x in locals) {
+                        if (keys.contains(x.id)) {
+                            //check
                         } else {
-                            SkinCancer.killSkinCancer(_x.id)
+                            SkinCancer.killSkinCancer(x.id)
                         }
                     }
                 }
             }
 
-            override fun onCancelled(databaseError: DatabaseError) {}
+            override fun onCancelled(databaseError: DatabaseError) {
+            //cancel
+            }
         }
-        database!!.child("skinCancers").addValueEventListener(skinCancer_listener)
+        database!!.child("skinCancers").addValueEventListener(skinCancerListener)
     }
 
     fun persistSkinCancer(ex: SkinCancer) {
-        val _evo = SkinCancerVO(ex)
-        val _key = _evo.getId()
+        val evo = SkinCancerVO(ex)
+        val key = evo.getId()
         if (database == null) {
             return
         }
-        database!!.child("skinCancers").child(_key).setValue(_evo)
+        database!!.child("skinCancers").child(key).setValue(evo)
     }
 
     fun deleteSkinCancer(ex: SkinCancer) {
-        val _key: String = ex.id
+        val key: String = ex.id
         if (database == null) {
             return
         }
-        database!!.child("skinCancers").child(_key).removeValue()
+        database!!.child("skinCancers").child(key).removeValue()
     }
 }
