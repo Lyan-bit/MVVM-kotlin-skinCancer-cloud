@@ -14,7 +14,8 @@ class FileAccessor (context: Context) {
         fun createFile(filename: String)
         { try
         { val newFile = File(myContext.filesDir, filename) }
-        catch (_e: Exception) { _e.printStackTrace() }
+        catch (e: Exception) 
+            { e.printStackTrace() }
         }
 
         fun readFile(filename: String) : ArrayList<String>
@@ -30,7 +31,8 @@ class FileAccessor (context: Context) {
                     { result.add(fileContent)}
                     inStrm.close()
                 }
-            } catch (_e: Exception) { _e.printStackTrace() }
+            } catch (e: Exception) 
+                { e.printStackTrace() }
             return result
         }
 
@@ -42,10 +44,13 @@ class FileAccessor (context: Context) {
                     outStrm.write(item + "\n")
                 }
             }
-            catch (_ix: IOException) { }
+            catch (ix: IOException) {
+                ix.printStackTrace()
+            }
             outStrm.close()
         }
-        catch (e: Exception) { e.printStackTrace() }
+        catch (e: Exception) { 
+            e.printStackTrace() }
         }
     }
 
