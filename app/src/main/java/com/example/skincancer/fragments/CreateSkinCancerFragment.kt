@@ -103,8 +103,7 @@ class CreateSkinCancerFragment : Fragment(), View.OnClickListener {
 		buttonCapture = root.findViewById(R.id.buttonTakePhoto)
 		buttonCapture.setOnClickListener(this)
 
-	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-		if (ContextCompat.checkSelfPermission(
+	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && ContextCompat.checkSelfPermission(
 				myContext,
 				Manifest.permission.READ_EXTERNAL_STORAGE
 			) != PackageManager.PERMISSION_GRANTED
@@ -113,7 +112,6 @@ class CreateSkinCancerFragment : Fragment(), View.OnClickListener {
 				arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
 				REQUESTREADEXTERNALSTORAGE
 			)
-		}
 	}
 
 	    return root
