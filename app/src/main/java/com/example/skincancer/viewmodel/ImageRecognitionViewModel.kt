@@ -7,7 +7,6 @@ import android.graphics.Matrix
 import android.media.ExifInterface
 import com.example.skincancer.ImageClassifier
 import java.io.File
-import java.io.IOException
 
 class ImageRecognitionViewModel constructor(myContext: Context) {
 
