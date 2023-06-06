@@ -17,12 +17,6 @@ class SkinViewModel constructor(context: Context): ViewModel() {
         }
     }
 
-    /* This metatype code requires OclType.java, OclAttribute.java, OclOperation.java */
-    fun initialiseOclTypes() {
-        val skinCancerOclType: OclType = OclType.createByPKOclType("SkinCancer")
-        skinCancerOclType.setMetatype(SkinCancer::class.java)
-    }
-
     private var currentSkinCancer: SkinCancerVO? = null
     private var currentSkinCancers: ArrayList<SkinCancerVO> = ArrayList()
 
