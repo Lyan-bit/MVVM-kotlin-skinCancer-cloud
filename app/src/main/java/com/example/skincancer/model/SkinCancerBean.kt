@@ -64,7 +64,7 @@ class SkinCancerBean(c: Context) {
 	               errors.add("images cannot be empty")
 	         }
 	
-	        return errors.size > 0
+	        return errors.isNotEmpty()
 	    }
 	    
 	    fun createSkinCancer() {
@@ -103,7 +103,7 @@ class SkinCancerBean(c: Context) {
 	               errors.add("images cannot be empty")
 	         }
 
-       return errors.size > 0
+       return errors.isNotEmpty()
    }
        
    fun deleteSkinCancer() {
@@ -116,7 +116,7 @@ class SkinCancerBean(c: Context) {
 			 if (!allSkinCancerids.contains(id)) {
 			    errors.add("id" + checkParameter)
         }
-        return errors.size > 0
+        return errors.isNotEmpty()
 		}    
 
    	fun isSearchSkinCancerError(allSkinCancerdatess: List<String>): Boolean {
@@ -124,7 +124,7 @@ class SkinCancerBean(c: Context) {
         if (!allSkinCancerdatess.contains(dates)) {
             errors.add("dates" + checkParameter)
         }
-        return errors.size > 0
+        return errors.isNotEmpty()
     }
     
 		fun isSearchSkinCancerIdError(allSkinCancerIds: List<String>): Boolean {
@@ -132,7 +132,7 @@ class SkinCancerBean(c: Context) {
    	       if (!allSkinCancerIds.contains(id)) {
     	       errors.add("id" + checkParameter)
     	   }
-           return errors.size > 0
+           return errors.isNotEmpty()
     }
 
     fun errors(): String {
