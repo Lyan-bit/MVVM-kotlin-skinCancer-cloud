@@ -16,7 +16,7 @@ class SkinCancerDAO {
             if (command != null) {
                 res += command
             }
-            if (pars.size == 0) {
+            if (pars.isEmpty()) {
                 return res
             }
             res = "$res?"
@@ -32,12 +32,12 @@ class SkinCancerDAO {
         }
 
         fun isCached(id: String?): Boolean {
-            SkinCancer.SkinCancerIndex.get(id) ?: return false
+            SkinCancer.SkinCancerIndex[id] ?: return false
             return true
         }
 
         fun getCachedInstance(id: String): SkinCancer? {
-            return SkinCancer.SkinCancerIndex.get(id)
+            return SkinCancer.SkinCancerIndex[id]
         }
 
       fun parseCSV(line: String?): SkinCancer? {
@@ -45,7 +45,7 @@ class SkinCancerDAO {
               return null
           }
           val line1vals: ArrayList<String> = Ocl.tokeniseCSV(line)
-          var skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex.get(line1vals[0])
+          var skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex[line1vals[0]]
           if (skinCancerx == null) {
               skinCancerx = SkinCancer.createByPKSkinCancer(line1vals[0])
           }
@@ -62,7 +62,7 @@ class SkinCancerDAO {
                 null
             } else try {
                 val id = obj.getString("id")
-                var skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex.get(id)
+                var skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex[id]
                 if (skinCancerx == null) {
                     skinCancerx = SkinCancer.createByPKSkinCancer(id)
                 }
@@ -84,7 +84,7 @@ class SkinCancerDAO {
           val rows: ArrayList<String> = Ocl.parseCSVtable(lines)
           for (item in rows.indices) {
               val row = rows[item]
-              if (row == null || row.trim { it <= ' ' }.length == 0) {
+              if (row == null || row.trim { it <= ' ' }.isEmpty()) {
                   //trim
               } else {
                   val x: SkinCancer? = parseCSV(row)
