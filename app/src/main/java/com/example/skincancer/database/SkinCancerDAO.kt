@@ -141,7 +141,7 @@ class SkinCancerDAO {
             try {
                 val map = obj as HashMap<String, Object>
                 val id: String = map["id"].toString()
-                var skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex.get(id)
+                var skinCancerx: SkinCancer? = SkinCancer.SkinCancerIndex[id]
                 if (skinCancerx == null) {
                     skinCancerx = SkinCancer.createByPKSkinCancer(id)
                 }
