@@ -1,16 +1,17 @@
 package com.example.skincancer
 
-import com.example.skincancer.model.SkinCancer
 import java.util.ArrayList
 
 class SkinCancerVO  {
 
-    private var id: String = ""
-    private var dates: String = ""
-    private var images: String = ""
-    private var outcome: String = ""
+     var id: String = ""
+     var dates: String = ""
+     var images: String = ""
+     var outcome: String = ""
 
-    constructor() {}
+    constructor() {
+    	//constructor
+    }
 
     constructor(idx: String, 
         datesx: String, 
@@ -23,11 +24,11 @@ class SkinCancerVO  {
         this.outcome = outcomex
     }
 
-    constructor (_x: SkinCancer) {
-        id = _x.id
-        dates = _x.dates
-        images = _x.images
-        outcome = _x.outcome
+    constructor (x: SkinCancer) {
+        id = x.id
+        dates = x.dates
+        images = x.images
+        outcome = x.outcome
     }
 
     override fun toString(): String {
@@ -40,39 +41,6 @@ class SkinCancerVO  {
             res.add(list[i].toString())
         }
         return res
-    }
-    
-    fun getId(): String {
-        return id
-    }
-    
-    fun getDates(): String {
-        return dates
-    }
-    
-    fun getImages(): String {
-        return images
-    }
-    
-    fun getOutcome(): String {
-        return outcome
-    }
-    
-
-    fun setId(_x: String) {
-    	id = _x
-    }
-    
-    fun setDates(_x: String) {
-    	dates = _x
-    }
-    
-    fun setImages(_x: String) {
-    	images = _x
-    }
-    
-    fun setOutcome(_x: String) {
-    	outcome = _x
     }
     
 }
