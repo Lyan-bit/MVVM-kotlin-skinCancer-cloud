@@ -3,7 +3,7 @@ package com.example.skincancer.viewmodel
 import android.content.Context
 import androidx.lifecycle.ViewModel
 import com.example.skincancer.model.SkinCancer
-import com.example.skincancer.SkinCancerVO
+import com.example.skincancer.model.SkinCancerVO
 import com.example.skincancer.database.FirebaseDB
 import java.util.ArrayList
 
@@ -48,7 +48,7 @@ class SkinViewModel constructor(context: Context): ViewModel() {
     fun allSkinCancerids(): ArrayList<String> {
         val res: ArrayList<String> = ArrayList()
         for (x in currentSkinCancers.indices) {
-            res.add(currentSkinCancers[x].getId() + "")
+            res.add(currentSkinCancers[x].id + "")
         }
         return res
     }
@@ -56,7 +56,7 @@ class SkinViewModel constructor(context: Context): ViewModel() {
     fun allSkinCancerdates(): ArrayList<String> {
         val res: ArrayList<String> = ArrayList()
         for (x in currentSkinCancers.indices) {
-            res.add(currentSkinCancers[x].getDates() + "")
+            res.add(currentSkinCancers[x].dates + "")
         }
         return res
     }
@@ -64,7 +64,7 @@ class SkinViewModel constructor(context: Context): ViewModel() {
     fun allSkinCancerimages(): ArrayList<String> {
         val res: ArrayList<String> = ArrayList()
         for (x in currentSkinCancers.indices) {
-            res.add(currentSkinCancers[x].getImages() + "")
+            res.add(currentSkinCancers[x].images + "")
         }
         return res
     }
@@ -72,7 +72,7 @@ class SkinViewModel constructor(context: Context): ViewModel() {
     fun allSkinCanceroutcomes(): ArrayList<String> {
         val res: ArrayList<String> = ArrayList()
         for (x in currentSkinCancers.indices) {
-            res.add(currentSkinCancers[x].getOutcome() + "")
+            res.add(currentSkinCancers[x].outcome + "")
         }
         return res
     }
@@ -98,14 +98,14 @@ class SkinViewModel constructor(context: Context): ViewModel() {
     }
 
     fun editSkinCancer(x: SkinCancerVO) {
-        var obj = getSkinCancerByPK(x.getId())
+        var obj = getSkinCancerByPK(x.id)
         if (obj == null) {
-            obj = SkinCancer.createByPKSkinCancer(x.getId())
+            obj = SkinCancer.createByPKSkinCancer(x.id)
         }
-        obj.id = x.getId()
-        obj.dates = x.getDates()
-        obj.images = x.getImages()
-        obj.outcome = x.getOutcome()
+        obj.id = x.id
+        obj.dates = x.dates
+        obj.images = x.images
+        obj.outcome = x.outcome
         cdb.persistSkinCancer(obj)
         currentSkinCancer = x
     }
@@ -126,13 +126,13 @@ class SkinViewModel constructor(context: Context): ViewModel() {
     fun searchSkinCancerid(id: String) : ArrayList<SkinCancer> {
         var itemsList = ArrayList<SkinCancer>()
         for (x in currentSkinCancers.indices) {
-            if ( currentSkinCancers[x].getId() == id) {
+            if ( currentSkinCancers[x].id == id) {
                 val vo: SkinCancerVO = currentSkinCancers[x]
-                val itemx = SkinCancer.createByPKSkinCancer(vo.getId())
-                itemx.id = vo.getId()
-                itemx.dates = vo.getDates()
-                itemx.images = vo.getImages()
-                itemx.outcome = vo.getOutcome()
+                val itemx = SkinCancer.createByPKSkinCancer(vo.id)
+                itemx.id = vo.id
+                itemx.dates = vo.dates
+                itemx.images = vo.images
+                itemx.outcome = vo.outcome
                 itemsList.add(itemx)
             }
         }
@@ -142,13 +142,13 @@ class SkinViewModel constructor(context: Context): ViewModel() {
     fun searchSkinCancerdates(dates: String) : ArrayList<SkinCancer> {
         var itemsList = ArrayList<SkinCancer>()
         for (x in currentSkinCancers.indices) {
-            if ( currentSkinCancers[x].getDates() == dates) {
+            if ( currentSkinCancers[x].dates == dates) {
                 val vo: SkinCancerVO = currentSkinCancers[x]
-                val itemx = SkinCancer.createByPKSkinCancer(vo.getId())
-                itemx.id = vo.getId()
-                itemx.dates = vo.getDates()
-                itemx.images = vo.getImages()
-                itemx.outcome = vo.getOutcome()
+                val itemx = SkinCancer.createByPKSkinCancer(vo.id)
+                itemx.id = vo.id
+                itemx.dates = vo.dates
+                itemx.images = vo.images
+                itemx.outcome = vo.outcome
                 itemsList.add(itemx)
             }
         }
@@ -158,13 +158,13 @@ class SkinViewModel constructor(context: Context): ViewModel() {
     fun searchSkinCancerimage(image: String) : ArrayList<SkinCancer> {
         var itemsList = ArrayList<SkinCancer>()
         for (x in currentSkinCancers.indices) {
-            if ( currentSkinCancers[x].getImages() == image) {
+            if ( currentSkinCancers[x].images == image) {
                 val vo: SkinCancerVO = currentSkinCancers[x]
-                val itemx = SkinCancer.createByPKSkinCancer(vo.getId())
-                itemx.id = vo.getId()
-                itemx.dates = vo.getDates()
-                itemx.images = vo.getImages()
-                itemx.outcome = vo.getOutcome()
+                val itemx = SkinCancer.createByPKSkinCancer(vo.id)
+                itemx.id = vo.id
+                itemx.dates = vo.dates
+                itemx.images = vo.images
+                itemx.outcome = vo.outcome
                 itemsList.add(itemx)
             }
         }
@@ -174,13 +174,13 @@ class SkinViewModel constructor(context: Context): ViewModel() {
     fun searchSkinCanceroutcome(outcome: String) : ArrayList<SkinCancer> {
         var itemsList = ArrayList<SkinCancer>()
         for (x in currentSkinCancers.indices) {
-            if ( currentSkinCancers[x].getOutcome() == outcome) {
+            if ( currentSkinCancers[x].outcome == outcome) {
                 val vo: SkinCancerVO = currentSkinCancers[x]
-                val itemx = SkinCancer.createByPKSkinCancer(vo.getId())
-                itemx.id = vo.getId()
-                itemx.dates = vo.getDates()
-                itemx.images = vo.getImages()
-                itemx.outcome = vo.getOutcome()
+                val itemx = SkinCancer.createByPKSkinCancer(vo.id)
+                itemx.id = vo.id
+                itemx.dates = vo.dates
+                itemx.images = vo.images
+                itemx.outcome = vo.outcome
                 itemsList.add(itemx)
             }
         }
