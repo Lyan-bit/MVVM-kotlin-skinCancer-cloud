@@ -17,11 +17,11 @@ class SectionsPagerAdapter(private val mContext: Context, fm: FragmentManager) :
                 0 -> { 
                     CreateSkinCancerFragment.newInstance(mContext) 
                 }            1 -> { 
-                    ListSkinCancerFragment.newInstance(mContext) 
+                    ListSkinFragment.newInstance(mContext)
                 }            2 -> { 
                     EditSkinCancerFragment.newInstance(mContext) 
                 }            3 -> { 
-                    DeleteSkinCancerFragment.newInstance(mContext) 
+                    DeleteSkinFragment.newInstance(mContext)
                 }            4 -> { 
                     SearchSkinCancerdatesFragment.newInstance(mContext) 
                 }            5 -> { 
