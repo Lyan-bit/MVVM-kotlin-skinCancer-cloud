@@ -1,7 +1,7 @@
 package com.example.skincancer.database
 
 import com.example.skincancer.model.SkinCancer
-import com.example.skincancer.SkinCancerVO
+import com.example.skincancer.model.SkinCancerVO
 import com.google.firebase.database.*
 import kotlin.collections.ArrayList
 
@@ -57,7 +57,7 @@ class FirebaseDB() {
 
     fun persistSkinCancer(ex: SkinCancer) {
         val evo = SkinCancerVO(ex)
-        val key = evo.getId()
+        val key = evo.id
         if (database == null) {
             return
         }
