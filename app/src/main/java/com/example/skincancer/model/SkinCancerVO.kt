@@ -1,4 +1,4 @@
-package com.example.skincancer
+package com.example.skincancer.model
 
 import java.util.ArrayList
 
